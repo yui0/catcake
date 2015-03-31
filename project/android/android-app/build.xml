@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="@@NAME@@" default="help">
+	<property file="local.properties" />
+	<property file="build.properties" />
+	<property file="default.properties" />
+
+	<import file="${sdk.dir}/tools/ant/pre_setup.xml" />
+
+	<target name="-pre-build">
+		<exec executable="/android-ndk/ndk-build">
+		<arg value="NDK_DEBUG=0"></arg>
+		<arg value="V=1 -B"></arg>
+		</exec>
+	</target>
+
+	<setup />
+</project>
