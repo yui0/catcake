@@ -14,6 +14,7 @@ cp -a ${path}/project/android/android-app /tmp/
 [ -r icon.png ] && cp -a icon.png /tmp/android-app/res/drawable/
 
 sed -e "s/@@NAME@@/${name}/" -i /tmp/android-app/build.xml
+sed -e "s:~/android-ndk:$HOME/android-ndk:" -i /tmp/android-app/build.xml
 sed -e "s/@@NAME@@/${name}/" -i /tmp/android-app/AndroidManifest.xml
 sed -e "s/@@PACKAGE@@/${package}/" -i /tmp/android-app/AndroidManifest.xml
 sed -e "s/@@NAME@@/${name}/" -i /tmp/android-app/res/values/strings.xml
@@ -40,6 +41,8 @@ pushd /tmp/android-app/
 
 #date=`date '+%Y.%m.%d'`
 #sed -e "s/%%DATE%%/$date/" assets/help.html.orig > assets/help.html
+
+export PATH=$PATH:~/android-sdk-linux/platform-tools/
 
 ant debug
 adb install -r bin/${name}-debug.apk
