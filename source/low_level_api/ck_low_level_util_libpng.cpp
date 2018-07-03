@@ -25,6 +25,8 @@ extern "C"
 {
 #include <png.h>
 }
+#define png_infopp_NULL (png_infopp)NULL
+#define int_p_NULL (int*)NULL
 
 #include "ck_low_level_api.h"
 
@@ -70,7 +72,7 @@ static bool readPNG(u16* width, u16* height, ckLowLevelAPI::TextureFormat* forma
 {
     const u32 PNG_SIGNATURE_SIZE = 8;
 
-    if (!png_check_sig(static_cast<png_bytep>(const_cast<void*>(data)), PNG_SIGNATURE_SIZE))
+    if (png_sig_cmp(static_cast<png_bytep>(const_cast<void*>(data)), 0, PNG_SIGNATURE_SIZE))
     {
         return false;
     }
