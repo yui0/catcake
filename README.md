@@ -3,6 +3,23 @@
 Catcake is a cross-platform 3D graphics engine intended to be easy-to-use and high performance, which also supports the features for game development, such as animation, input device handling and sound playing.
 This application is designed for Android, iOS, Linux, Windows.
 
+## make
+
+- Linux
+
+```bash
+# dnf install libjpeg-turbo-devel
+$ cd project/linux/catcake
+$ make
+```
+
+- Android
+
+```bash
+$ cd project/android/jni
+$ sh build.sh
+```
+
 ## Install
 
 - Download android-sdk-linux and install it.
